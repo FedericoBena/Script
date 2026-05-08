@@ -21,7 +21,7 @@ if not args:
     print("   Uso: python settings/usethis.py numpy pandas")
     sys.exit(1)
 
-print(f"📦 Installo nel venv: {' '.join(args)}")
+print(f"Installo nel venv: {' '.join(args)}")
 subprocess.run([sys.executable, "-m", "pip", "install"] + args, check=True)
 
 result = subprocess.run([sys.executable, "-m", "pip", "freeze"], capture_output=True, text=True, check=True)
@@ -29,4 +29,4 @@ with open(REQ, "w") as f:
     f.write(result.stdout)
 
 print()
-print("✅ Fatto! requirements.txt aggiornato automaticamente.")
+print("Fatto! requirements.txt aggiornato automaticamente.")

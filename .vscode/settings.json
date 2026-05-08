@@ -1,0 +1,38 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "terminal.integrated.env.windows": {
+    "VIRTUAL_ENV": "${workspaceFolder}\\.venv",
+    "PATH": "${workspaceFolder}\\.venv\\Scripts;${env:PATH}"
+  },
+  "terminal.integrated.env.linux": {
+    "VIRTUAL_ENV": "${workspaceFolder}/.venv",
+    "PATH": "${workspaceFolder}/.venv/bin:${env:PATH}"
+  },
+  "terminal.integrated.env.osx": {
+    "VIRTUAL_ENV": "${workspaceFolder}/.venv",
+    "PATH": "${workspaceFolder}/.venv/bin:${env:PATH}"
+  },
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (venv)": {
+      "source": "PowerShell",
+      "args": ["-NoExit", "-File", "${workspaceFolder}\\.vscode\\init.ps1"]
+    }
+  },
+  "terminal.integrated.profiles.linux": {
+    "bash (venv)": {
+      "path": "bash",
+      "args": ["--rcfile", "${workspaceFolder}/.vscode/init.sh"]
+    }
+  },
+  "terminal.integrated.profiles.osx": {
+    "zsh (venv)": {
+      "path": "zsh",
+      "args": ["-i"],
+      "env": {"ZDOTDIR": "${workspaceFolder}/.vscode"}
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (venv)",
+  "terminal.integrated.defaultProfile.linux": "bash (venv)",
+  "terminal.integrated.defaultProfile.osx": "zsh (venv)"
+}

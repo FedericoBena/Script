@@ -26,12 +26,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+TOKEN_PATH = Path(__file__).parent.parent / ".garmin_token"
+
+
 def get_client() -> Garmin:
     email = os.getenv("GARMIN_EMAIL") or input("Garmin email: ")
     password = os.getenv("GARMIN_PASSWORD") or getpass("Garmin password: ")
-    client = Garmin(email, password)
-    client.login()
-    print(f"✓ Login OK — {client.get_full_name()}")
+    client = Garmin(email, password, prompt_mfa=lambda: input("Codice MFA: "))
+    try:
+        client.login(str(TOKEN_PATH))
+        print("Login OK (token cached)")
+    except FileNotFoundError:
+        client.login()
+        client.garth.dump(str(TOKEN_PATH))
+        print(f"Login OK — {client.get_full_name()}")
     return client
 
 

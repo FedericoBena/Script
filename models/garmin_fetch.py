@@ -309,7 +309,7 @@ def main():
             snapshot[name] = {"error": str(e)}
             print(f"ERRORE ({e})")
 
-    out = Path(__file__).parent / "data" / "garmin_snapshot.json"
+    out = Path(__file__).parent.parent / "data" / f"garmin_{date.today().isoformat()}.json"
     out.parent.mkdir(exist_ok=True)
     out.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\n✅ Salvato in: {out}")
